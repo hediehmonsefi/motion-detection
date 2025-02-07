@@ -171,4 +171,5 @@ cython_debug/
 .pypirc
 
 
-.mp4
+*.mp4
+*.mov
