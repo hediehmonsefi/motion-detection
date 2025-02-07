@@ -1,23 +1,35 @@
 import cv2
+from config import Config
 from motion_detection import MotionDetection
 
 
 def main():
-    # Initialize motion detection with default parameters
-    motion_detector = MotionDetection(motion_threshold=100)
+    # Parse command-line arguments
+    args = Config.parse_args()
 
-    # Open webcam
-    cap = cv2.VideoCapture("/Users/hedieh/Documents/AI/git/motionDetection/motion.mp4")
+    # Select video source
+    if args.webcam:
+        cap = cv2.VideoCapture(0)  # Open webcam
+    elif args.video:
+        cap = cv2.VideoCapture(args.video)  # Open provided video file
+    else:
+        print("Error: You must provide --video <path> or use --webcam")
+        return
 
     if not cap.isOpened():
-        print("Error: Could not open webcam.")
+        print("Error: Could not open video source.")
         return
+
+
+    # Initialize motion detection with default parameters
+    motion_detector = MotionDetection(motion_hold=args.motion_hold, motion_threshold=args.motion_threshold)
 
     print("Press 'q' to quit.")
 
     while True:
         ret, frame = cap.read()
         if not ret:
+            print("End of video or error reading frame.")
             break
 
         # Process the frame for motion detection
