@@ -174,3 +174,4 @@ cython_debug/
 *.mp4
 *.mov
 .idea/
+.DS_Store
