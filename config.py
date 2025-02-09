@@ -8,6 +8,7 @@ class Config:
         # Video Source Options
         parser.add_argument("--video", type=str, help="Path to the video file")
         parser.add_argument("--webcam", action="store_true", help="Use webcam")
+        parser.add_argument("--cctv", type=str, help="RTSP URL of a CCTV camera")
 
         # Motion Detection Parameters
         parser.add_argument("--motion-threshold", type=int, default=500, help="Minimum contour area to detect motion")

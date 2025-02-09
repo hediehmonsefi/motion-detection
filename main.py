@@ -12,8 +12,10 @@ def main():
         cap = cv2.VideoCapture(0)  # Open webcam
     elif args.video:
         cap = cv2.VideoCapture(args.video)  # Open provided video file
+    elif args.cctv:
+        cap = cv2.VideoCapture(args.cctv)  # Open CCTV stream via RTSP URL
     else:
-        print("Error: You must provide --video <path> or use --webcam")
+        print("Error: You must provide --video <path>, --webcam, or --cctv <URL>")
         return
 
     if not cap.isOpened():

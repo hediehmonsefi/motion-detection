@@ -14,7 +14,7 @@
 ### 🛠 Features
 ##### ✅ Motion detection based on frame differencing
 ##### ✅ Adjustable motion sensitivity (motion_threshold & motion_hold)
-##### ✅ Works with webcam or pre-recorded videos
+##### ✅ Works with webcam, video files, and CCTV cameras** (RTSP streams)
 ##### ✅ Real-time object highlighting
 ##### ✅ Command-line arguments for easy customization
 #
@@ -44,23 +44,28 @@ python main.py --video path/to/video.mp4
 |----------------------|-------------|
 | `--video <path>`     | Path to a video file for motion detection |
 | `--webcam`           | Use webcam instead of a video file |
+| `--cctv <RTSP_URL>`  | Connect to a CCTV camera via RTSP stream |
 | `--motion-threshold` | Minimum contour area to detect motion (default: `500`) |
 | `--motion-hold`      | Number of frames to hold before checking motion (default: `5`) |
 ````
 ##### Example:
 ```bash 
-python main.py --webcam --motion-threshold 300 --motion-hold 10
+python main.py --cctv rtsp://admin:1234@192.168.1.10:554/stream --motion-threshold 300 --motion-hold 10
 ```
 #
 
 ### 📂 Project Structure
-```bash
-motion-detection/
-│── motion_detection.py   # Motion detection logic
-│── config.py             # Handles command-line arguments (argparse)
-│── main.py               # Runs the detection
-│── requirements.txt      # Dependencies
-│── README.md             # Project documentation
+```bashmotion-detection/
+│── demo/                     # Store demo videos/gifs
+│   └── demo.gif              # Demo gif of the motion detection
+│── src/                      # Source code folder
+│   ├── config.py             # Configuration file for argument parsing
+│   ├── motion_detection.py   # Motion detection logic
+│   └── main.py               # Main entry point for the program
+│── requirements.txt          # Python dependencies
+│── .gitignore                # Git ignore file
+│── LICENSE                   # License for the project
+│── README.md                 # Project documentation
 ```
 #
 
