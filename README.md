@@ -7,7 +7,7 @@
 
 
 ### 🎥 Demo
-![Demo](demo.gif)
+![Demo](demo/demo.gif)
 #
 
 
